@@ -1,0 +1,44 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func encontrarNumerosComuns(slice1, slice2 []int) ([]int, error) {
+	// Verifica se algum dos slices está vazio e retorna um erro, se for o caso
+	if len(slice1) == 0 || len(slice2) == 0 {
+		return nil, errors.New("pelo menos um dos slices está vazio")
+	}
+
+	// Cria um mapa para armazenar os números do primeiro slice
+	numerosMap := make(map[int]bool)
+	for _, num := range slice1 {
+		numerosMap[num] = true
+	}
+
+	// Cria um slice para armazenar os números comuns
+	numerosComuns := []int{}
+	
+	// Verifica se os números do segundo slice estão no mapa e adiciona ao slice de números comuns
+	for _, num := range slice2 {
+		if numerosMap[num] {
+			numerosComuns = append(numerosComuns, num)
+		}
+	}
+
+	return numerosComuns, nil
+}
+
+func main() {
+	// Exemplo de uso da função com dois slices de inteiros
+	slice1 := []int{1, 2, 3, 4, 5}
+	slice2 := []int{3, 4, 5, 6, 7}
+	
+	numerosComuns, err := encontrarNumerosComuns(slice1, slice2)
+	if err == nil {
+		fmt.Println("Números comuns:", numerosComuns)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+}
