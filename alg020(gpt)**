@@ -1,0 +1,35 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func stringsComMaisDe5Caracteres(s []string) ([]string, error) {
+	if len(s) == 0 {
+		return nil, errors.New("Slice está vazio")
+	}
+
+	resultado := []string{}
+	for _, str := range s {
+		if len(str) > 5 {
+			resultado = append(resultado, str)
+		}
+	}
+	return resultado, nil
+}
+
+func main() {
+	// Exemplo de slice de strings
+	sliceStrings := []string{"go", "python", "javascript", "java", "csharp", "ruby", "kotlin", "swift"}
+
+	// Chamando a função
+	novasStrings, err := stringsComMaisDe5Caracteres(sliceStrings)
+
+	// Verificando se há erro
+	if err == nil {
+		fmt.Println("Strings com mais de 5 caracteres:", novasStrings)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+}
