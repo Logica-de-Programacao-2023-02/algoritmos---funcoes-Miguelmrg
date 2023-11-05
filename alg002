@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func contarVogais(s string) int {
+	count := 0
+
+	lowercaseString := strings.ToLower(s)
+
+	for _, char := range lowercaseString {
+		if char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u' {
+			count++
+		}
+	}
+	return count
+}
+func main() {
+	input := "Olá, esta é uma frase de exemplo com vogais."
+	vogaisCount := contarVogais(input)
+
+	fmt.Printf("A quantidade de vogais na string é: %d\n", vogaisCount)
+}
