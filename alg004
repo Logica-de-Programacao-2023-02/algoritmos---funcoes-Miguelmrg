@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+func encontrarPosicao(slice []int, valor int) int {
+	for i, num := range slice {
+		if num == valor {
+			return i
+		}
+	}
+	return -1
+}
+
+func main() {
+	numeros := []int{1, 3, 5, 7, 9}
+	valorProcurado := 9
+
+	posicao := encontrarPosicao(numeros, valorProcurado)
+	if posicao != -1 {
+		fmt.Printf("O valor %d foi encontrado na posição %d do slice.\n", valorProcurado, posicao)
+	} else {
+		fmt.Printf("O valor %d não foi encontrado no slice.\n", valorProcurado)
+	}
+}
