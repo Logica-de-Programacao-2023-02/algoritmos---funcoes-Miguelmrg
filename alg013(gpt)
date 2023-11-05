@@ -1,0 +1,43 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func somaDigitos(numero int) (int, error) {
+	// Verifica se o número é negativo e retorna um erro, se for o caso
+	if numero < 0 {
+		return 0, errors.New("número negativo não é permitido")
+	}
+
+	// Inicializa a variável para armazenar a soma dos dígitos
+	soma := 0
+
+	// Calcula a soma dos dígitos do número
+	for numero > 0 {
+		digito := numero % 10
+		soma += digito
+		numero /= 10
+	}
+
+	return soma, nil
+}
+
+func main() {
+	// Exemplo de uso da função com um número inteiro positivo
+	numeroPositivo := 12345
+	if soma, err := somaDigitos(numeroPositivo); err == nil {
+		fmt.Println("Soma dos dígitos:", soma)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+
+	// Exemplo com um número inteiro negativo
+	numeroNegativo := -12345
+	if soma, err := somaDigitos(numeroNegativo); err == nil {
+		fmt.Println("Soma dos dígitos:", soma)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+}
