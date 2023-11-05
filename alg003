@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func concatenarStrings(slice []string) string {
+	resultado := strings.Join(slice, "")
+
+	return resultado
+}
+func main() {
+	palavras := []string{"lógica", "de", "programação", "é", "muito", "difícil"}
+
+	concatenado := concatenarStrings(palavras)
+	fmt.Println("String concatenada:", concatenado)
+}
