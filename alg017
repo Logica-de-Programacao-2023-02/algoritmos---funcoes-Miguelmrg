@@ -1,0 +1,28 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+	"sort"
+	"strings"
+)
+
+func ordenarStrings(s []string) (string, error) {
+	if len(s) == 0 {
+		return "", errors.New("o slice de strings está vazio")
+	}
+	sort.Strings(s)
+	resultado := strings.Join(s, " ")
+
+	return resultado, nil
+}
+func main() {
+	stringsParaOrdenar := []string{"banana", "laranja", "abacaxi", "maçã", "uva"}
+
+	resultado, err := ordenarStrings(stringsParaOrdenar)
+	if err == nil {
+		fmt.Println("Strings ordenadas:", resultado)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+}
