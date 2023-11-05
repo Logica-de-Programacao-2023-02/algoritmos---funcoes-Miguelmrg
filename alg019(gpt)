@@ -1,0 +1,42 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func isPrimo(num int) bool {
+	if num <= 1 {
+		return false
+	}
+	for i := 2; i*i <= num; i++ {
+		if num%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func numerosPrimos(entrada int) ([]int, error) {
+	if entrada < 0 {
+		return nil, errors.New("Número negativo não é permitido")
+	}
+
+	primos := []int{}
+	for i := 2; i <= entrada; i++ {
+		if isPrimo(i) {
+			primos = append(primos, i)
+		}
+	}
+	return primos, nil
+}
+
+func main() {
+	numero := 20 // Altere o número conforme necessário
+	primos, err := numerosPrimos(numero)
+	if err == nil {
+		fmt.Println("Números primos até", numero, ":", primos)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+}
