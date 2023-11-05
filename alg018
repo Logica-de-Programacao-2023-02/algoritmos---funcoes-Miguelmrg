@@ -1,0 +1,30 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func aplicarFuncao(slice []int, fn func(int) int) (int, error) {
+	if len(slice) == 0 {
+		return 0, errors.New("o slice de inteiros está vazio")
+	}
+	soma := 0
+	for _, num := range slice {
+		soma += fn(num)
+	} 
+	return soma, nil
+}
+func dobrarNumero(numero int) int {
+	return numero * 2
+}
+func main() {
+	numeros := []int{1, 2, 3, 4, 5}
+
+	resultado, err := aplicarFuncao(numeros, dobrarNumero)
+	if err == nil {
+		fmt.Println("Soma dos números dobrados:", resultado)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+}
