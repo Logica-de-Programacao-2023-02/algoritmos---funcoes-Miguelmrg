@@ -1,0 +1,38 @@
+package main
+
+import (
+	"errors"
+	"fmt"
+	"strings"
+)
+
+func concatenarComVirgulas(slice []string) (string, error) {
+	// Verifica se o slice está vazio e retorna um erro, se for o caso
+	if len(slice) == 0 {
+		return "", errors.New("o slice está vazio")
+	}
+	
+	// Usa a função strings.Join para concatenar strings e separá-las por vírgulas
+	resultado := strings.Join(slice, ", ")
+
+	return resultado, nil
+}
+
+func main() {
+	// Exemplos de slices de strings
+	slice1 := []string{"Maçã", "Banana", "Laranja"}
+	slice2 := []string{} // Slice vazio
+
+	// Chama a função concatenarComVirgulas e imprime o resultado
+	if concatenado, err := concatenarComVirgulas(slice1); err == nil {
+		fmt.Println("Concatenado com vírgulas:", concatenado)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+
+	if concatenado, err := concatenarComVirgulas(slice2); err == nil {
+		fmt.Println("Concatenado com vírgulas:", concatenado)
+	} else {
+		fmt.Println("Erro:", err)
+	}
+}
